@@ -78,6 +78,12 @@ def tweet(chains):
 
     print api.VerifyCredentials()
 
+    #print most recent tweet to terminal, before posting new tweet
+    statuses = api.GetUserTimeLine(id = 4754349372)
+    # home_timeline = api.GetHomeTimeLine()
+    # print [s.text for s in home_timeline]
+    print[s.text for s in statuses]
+
     status = api.PostUpdate(chains)
     print status.text
     # pass
