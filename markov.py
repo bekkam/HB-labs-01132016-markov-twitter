@@ -59,12 +59,12 @@ def make_text(chains):
     # return " ".join(words)
     new_string = " ".join(words)
     if len(new_string) < 140:
-        print new_string
-        print len(new_string)
+        # print new_string
+        # print len(new_string)
         return new_string
     else:
-        print new_string[:140]
-        print len(new_string)
+        # print new_string[:140]
+        # print len(new_string)
         return new_string[:140]
 
 def tweet(chains):
@@ -79,13 +79,13 @@ def tweet(chains):
     print api.VerifyCredentials()
 
     #print most recent tweet to terminal, before posting new tweet
-    statuses = api.GetUserTimeLine(id = 4754349372)
+    # statuses = api.GetUserTimeLine(id = 4754349372)
     # home_timeline = api.GetHomeTimeLine()
     # print [s.text for s in home_timeline]
-    print[s.text for s in statuses]
+    # print[s.text for s in statuses]
 
     status = api.PostUpdate(chains)
-    print status.text
+    # print status.text
     # pass
 
 # Get the filenames from the user through a command line prompt, ex:
@@ -101,3 +101,18 @@ string = make_text(chains)
 
 # Your task is to write a new function tweet, that will take chains as input
 tweet(string)
+
+def retweet():
+    tweet_again = True 
+    while tweet_again == True:
+        userinput = raw_input("Enter to tweet again [q to quit] > ")
+        if userinput == "":
+            print "you pressed enter"
+            string = make_text(chains)
+            tweet(string)
+        elif userinput == "q":
+            print "Thanks for tweeting; bye now!"
+            tweet_again = False
+        else:
+            print "Sorry, that is not a valid option."
+retweet()
